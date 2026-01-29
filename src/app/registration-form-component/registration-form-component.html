@@ -1,0 +1,10 @@
+<div class="form-container">
+    <form [formGroup]="userRegistrationForm" (ngSubmit)="onSubmit()">
+        <label>User Name</label>
+        <input type="text" placeholder="Enter User Name" formControlName="userName" />
+        <label>Contact Number</label>
+        <input type="text" placeholder="Enter Contact" formControlName="contactNumber" />
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<button type="">
