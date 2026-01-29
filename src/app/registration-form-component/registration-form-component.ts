@@ -35,6 +35,10 @@ export class RegistrationFormComponent implements OnInit{
     this.router.navigateByUrl('/userInfo')
   }
 
+  loadUserInfo() {
+
+  }
+  
   canDeactivate(){
     if(!this.isSubmitted){
       return confirm("'You have unsaved changes. Are you sure you want to leave this page?'")
