@@ -12,6 +12,7 @@ import { Router, RouterOutlet } from '@angular/router';
 export class RegistrationFormComponent implements OnInit{
   userRegistrationForm: FormGroup = new FormGroup({});
   newUserName: string = '';
+  isSubmitted = false;
   constructor(private fb: FormBuilder, private sharedService: SharedService, private router: Router) {}
 
   ngOnInit(): void {
@@ -21,7 +22,9 @@ export class RegistrationFormComponent implements OnInit{
 
     })
   }
+
   onSubmit(){
+    this.isSubmitted = true;
     console.log("onSubmit", this.userRegistrationForm.value);
     this.newUserName = this.userRegistrationForm.value.userName;
     this.sharedService.sendUserInfo(this.userRegistrationForm.value);
@@ -30,5 +33,12 @@ export class RegistrationFormComponent implements OnInit{
 
   sendUserData(){
     this.router.navigateByUrl('/userInfo')
+  }
+
+  canDeactivate(){
+    if(!this.isSubmitted){
+      return confirm("'You have unsaved changes. Are you sure you want to leave this page?'")
+    }
+    return true;
   }
 }
