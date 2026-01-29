@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from '../shared-service';
 
 @Component({
@@ -9,7 +9,8 @@ import { SharedService } from '../shared-service';
 })
 export class UserInfoComponent implements OnInit {
   constructor(private ss: SharedService) {}
-
+  @Input() userDetails: any;
+  
   ngOnInit() {
     this.ss.userInfo.subscribe((res) => {
       console.log("res",res);
