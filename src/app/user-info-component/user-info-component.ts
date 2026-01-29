@@ -10,10 +10,11 @@ import { SharedService } from '../shared-service';
 export class UserInfoComponent implements OnInit {
   constructor(private ss: SharedService) {}
   @Input() userDetails: any;
-  
+
   ngOnInit() {
     this.ss.userInfo.subscribe((res) => {
       console.log("res",res);
+      console.log("userDetails", this.userDetails)
     })
   }
 }
