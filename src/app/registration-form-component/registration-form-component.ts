@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedService } from '../shared-service';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-registration-form-component',
@@ -11,7 +12,7 @@ import { SharedService } from '../shared-service';
 export class RegistrationFormComponent implements OnInit{
   userRegistrationForm: FormGroup = new FormGroup({});
   newUserName: string = '';
-  constructor(private fb: FormBuilder, private sharedService: SharedService) {}
+  constructor(private fb: FormBuilder, private sharedService: SharedService, private router: Router) {}
 
   ngOnInit(): void {
     this.userRegistrationForm = this.fb.group({
@@ -23,10 +24,11 @@ export class RegistrationFormComponent implements OnInit{
   onSubmit(){
     console.log("onSubmit", this.userRegistrationForm.value);
     this.newUserName = this.userRegistrationForm.value.userName;
+    this.sharedService.sendUserInfo(this.userRegistrationForm.value);
     
   }
 
   sendUserData(){
-    this.sharedService.sendUserInfo(this.userRegistrationForm.value)
+    this.router.navigateByUrl('/userInfo')
   }
 }

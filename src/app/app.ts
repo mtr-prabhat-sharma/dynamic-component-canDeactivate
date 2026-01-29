@@ -4,7 +4,7 @@ import { RegistrationFormComponent } from "./registration-form-component/registr
 
 @Component({
   selector: 'app-root',
-  imports: [RegistrationFormComponent],
+  imports: [ RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

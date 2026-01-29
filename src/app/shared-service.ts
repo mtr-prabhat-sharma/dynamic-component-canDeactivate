@@ -5,13 +5,13 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class SharedService {
-  userInfo = new BehaviorSubject({});
-
+  private userInfoSource = new BehaviorSubject<any>({});
+  userInfo = this.userInfoSource.asObservable();
   sendUserInfo(userObj: any){
-    this.userInfo.next(userObj);
+    this.userInfoSource.next(userObj);
   }
 
   getUserInfo(){
-    
+
   }
 }

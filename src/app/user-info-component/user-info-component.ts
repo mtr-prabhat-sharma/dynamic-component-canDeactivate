@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../shared-service';
 
 @Component({
   selector: 'app-user-info-component',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './user-info-component.html',
   styleUrl: './user-info-component.scss',
 })
-export class UserInfoComponent {
+export class UserInfoComponent implements OnInit {
+  constructor(private ss: SharedService) {}
 
+  ngOnInit() {
+    this.ss.userInfo.subscribe((res) => {
+      console.log("res",res);
+    })
+  }
 }
